@@ -337,8 +337,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85e1afe0b461147a3a00f68509f1dda2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxTorque: .5
-  Torque: 0
+  MaxThrust: .5
+  Thrust: 0
 --- !u!1 &642219758
 GameObject:
   m_ObjectHideFlags: 0
@@ -532,8 +532,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85e1afe0b461147a3a00f68509f1dda2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxTorque: .5
-  Torque: 0
+  MaxThrust: .5
+  Thrust: 0
 --- !u!1 &642339252
 GameObject:
   m_ObjectHideFlags: 0
@@ -870,8 +870,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85e1afe0b461147a3a00f68509f1dda2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxTorque: .5
-  Torque: 0
+  MaxThrust: .5
+  Thrust: 0
 --- !u!1 &1536113684
 GameObject:
   m_ObjectHideFlags: 0
@@ -943,8 +943,11 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1541832970}
-  - 114: {fileID: 1541832972}
   - 114: {fileID: 1541832971}
+  - 114: {fileID: 1541832974}
+  - 114: {fileID: 1541832975}
+  - 114: {fileID: 1541832973}
+  - 114: {fileID: 1541832972}
   m_Layer: 0
   m_Name: Drone
   m_TagString: Untagged
@@ -971,34 +974,76 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1541832969}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 90f594ebfffac4690905c54591f68900, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Frame: {fileID: 642339254}
+  MotorFR: {fileID: 516010952}
+  MotorFL: {fileID: 1306393603}
+  MotorRR: {fileID: 642219765}
+  MotorRL: {fileID: 2006401561}
+  MaxRoll: .00999999978
+  MaxPitch: .00999999978
+  MaxYaw: .00999999978
+--- !u!114 &1541832972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1541832969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f3a35dd5add046e19bc65dd594b56ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   MotorFR: {fileID: 516010952}
   MotorFL: {fileID: 1306393603}
   MotorRR: {fileID: 642219765}
   MotorRL: {fileID: 2006401561}
---- !u!114 &1541832972
+--- !u!114 &1541832973
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11400000, guid: 2606522b451bb4c70833db10c284eafd,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1541832969}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c6179c8191a04d93bdd07ca3237b355, type: 3}
+  m_Script: {fileID: 11500000, guid: 355654df311e54762b7e9d4440fcbd5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RotorFR: {fileID: 516010946}
-  RotorFL: {fileID: 1306393597}
-  RotorRR: {fileID: 642219759}
-  RotorRL: {fileID: 2006401555}
-  Force: 4
-  Torque: .200000003
-  Euler: {x: 0, y: 0, z: 0}
+  ElevatorSensitivity: .5
+  AileronSensitivity: .5
+  RudderSensitivity: .5
+  MainBoard: {fileID: 1541832974}
+--- !u!114 &1541832974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1541832969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6fe2bf3870f04a3f85c234af099e40f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ThrustSignalBus:
+  - {fileID: 1541832972}
+  ControlSignalBus:
+  - {fileID: 1541832973}
+--- !u!114 &1541832975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1541832969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f6f56745ed944e75b752552da45bdac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MainBoard: {fileID: 1541832974}
 --- !u!1 &1747085601
 GameObject:
   m_ObjectHideFlags: 0
@@ -1368,8 +1413,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85e1afe0b461147a3a00f68509f1dda2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxTorque: .5
-  Torque: 0
+  MaxThrust: .5
+  Thrust: 0
 --- !u!1 &2083001088
 GameObject:
   m_ObjectHideFlags: 0
