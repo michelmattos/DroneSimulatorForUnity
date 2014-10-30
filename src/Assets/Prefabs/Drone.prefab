@@ -13,7 +13,7 @@ GameObject:
   - 23: {fileID: 2300000}
   - 54: {fileID: 5400000}
   - 153: {fileID: 15300000}
-  - 114: {fileID: 11400002}
+  - 114: {fileID: 11400008}
   m_Layer: 0
   m_Name: Rotor FR
   m_TagString: Untagged
@@ -34,7 +34,7 @@ GameObject:
   - 23: {fileID: 2300002}
   - 54: {fileID: 5400002}
   - 153: {fileID: 15300002}
-  - 114: {fileID: 11400004}
+  - 114: {fileID: 11400010}
   m_Layer: 0
   m_Name: Rotor RR
   m_TagString: Untagged
@@ -55,7 +55,7 @@ GameObject:
   - 23: {fileID: 2300004}
   - 54: {fileID: 5400006}
   - 153: {fileID: 15300004}
-  - 114: {fileID: 11400006}
+  - 114: {fileID: 11400012}
   m_Layer: 0
   m_Name: Rotor FL
   m_TagString: Untagged
@@ -72,6 +72,9 @@ GameObject:
   m_Component:
   - 4: {fileID: 400006}
   - 114: {fileID: 11400000}
+  - 114: {fileID: 11400006}
+  - 114: {fileID: 11400004}
+  - 114: {fileID: 11400002}
   m_Layer: 0
   m_Name: Drone
   m_TagString: Untagged
@@ -128,7 +131,7 @@ GameObject:
   - 23: {fileID: 2300010}
   - 54: {fileID: 5400008}
   - 153: {fileID: 15300006}
-  - 114: {fileID: 11400008}
+  - 114: {fileID: 11400014}
   m_Layer: 0
   m_Name: Rotor RL
   m_TagString: Untagged
@@ -584,7 +587,7 @@ BoxCollider:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
-  m_Material: {fileID: 13400000, guid: 5df660eb880d4427f9b355cad1b7463e, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -670,18 +673,56 @@ MonoBehaviour:
   m_GameObject: {fileID: 100006}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90f594ebfffac4690905c54591f68900, type: 3}
+  m_Script: {fileID: 11500000, guid: 0f6f56745ed944e75b752552da45bdac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Frame: {fileID: 0}
-  MotorFR: {fileID: 11400002}
-  MotorFL: {fileID: 11400006}
-  MotorRR: {fileID: 11400004}
-  MotorRL: {fileID: 11400008}
-  MaxRoll: .00999999978
-  MaxPitch: .00999999978
-  MaxYaw: .00999999978
+  MainBoard: {fileID: 11400006}
 --- !u!114 &11400002
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f3a35dd5add046e19bc65dd594b56ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MotorFR: {fileID: 11400008}
+  MotorFL: {fileID: 11400012}
+  MotorRR: {fileID: 11400010}
+  MotorRL: {fileID: 11400014}
+--- !u!114 &11400004
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 355654df311e54762b7e9d4440fcbd5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ElevatorSensitivity: .5
+  AileronSensitivity: .5
+  RudderSensitivity: .5
+  MainBoard: {fileID: 11400006}
+--- !u!114 &11400006
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6fe2bf3870f04a3f85c234af099e40f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ThrustSignalBus:
+  - {fileID: 11400002}
+  ControlSignalBus:
+  - {fileID: 11400004}
+--- !u!114 &11400008
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -694,7 +735,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxThrust: .5
   Thrust: 0
---- !u!114 &11400004
+--- !u!114 &11400010
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -707,7 +748,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxThrust: .5
   Thrust: 0
---- !u!114 &11400006
+--- !u!114 &11400012
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -720,7 +761,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxThrust: .5
   Thrust: 0
---- !u!114 &11400008
+--- !u!114 &11400014
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}

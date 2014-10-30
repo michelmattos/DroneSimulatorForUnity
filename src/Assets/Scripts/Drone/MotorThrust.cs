@@ -16,6 +16,12 @@ public class MotorThrust : MonoBehaviour {
 	public void ApplyTorque(float percent) {
 		Thrust = Mathf.Clamp01(percent) * MaxThrust;
 		rigid.AddForce(transform.up * (Thrust * Physics.gravity.magnitude));
+		rigid.AddForce(-transform.forward * (Thrust * Physics.gravity.magnitude));
 	}
+	
+//	void OnDrawGizmos() {
+//		Gizmos.color = Color.yellow;
+//		Gizmos.DrawRay(transform.position, transform.forward);
+//	}
 	
 }
